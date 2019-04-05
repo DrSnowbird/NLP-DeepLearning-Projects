@@ -22,15 +22,15 @@ services:
       - current/
 
   rasa_nlu:
-#    image: rasa/rasa_nlu:latest-spacy
-    image: rasa/rasa_nlu:latest-full
+    image: rasa/rasa_nlu:latest-spacy
+#    image: rasa/rasa_nlu:latest-full
     container_name: rasa_nlu
     volumes:
       - ./models/rasa_nlu:/app/models
     command:
       - start
       - --path
-      - models
+      - models"
 
   action_server:
     image: rasa/rasa_core_sdk:latest
