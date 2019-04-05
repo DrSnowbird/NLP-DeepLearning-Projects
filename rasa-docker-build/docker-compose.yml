@@ -30,7 +30,7 @@ services:
     command:
       - start
       - --path
-      - models"
+      - models
 
   action_server:
     image: rasa/rasa_core_sdk:latest
@@ -44,6 +44,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: rasa
       MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - 27017:27017
 
   mongo-express:
     image: mongo-express
