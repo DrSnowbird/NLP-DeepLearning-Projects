@@ -1,0 +1,10 @@
+version: '3'
+
+services: 
+  
+  rasa_core:
+    build: .
+    container_name: rasa_core_and_nlu
+    ports:
+      - 5000:5000
+      - 5005:5005
