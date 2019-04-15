@@ -8,8 +8,9 @@ services:
     ports:
       - 5005:5005
     volumes:
-      - ./models/rasa_core:/app/models
-      - ./config:/app/config
+      - ./project:/app/project
+      - ./project/models/core:/app/models
+      - ./project/config:/app/config
     command:
       - start
       - --core
@@ -23,10 +24,14 @@ services:
 
   rasa_nlu:
     image: rasa/rasa_nlu:latest-spacy
-#    image: rasa/rasa_nlu:latest-full
+#   image: rasa/rasa_nlu:latest-full
     container_name: rasa_nlu
+    ports:
+      - 5000:5000
     volumes:
-      - ./models/rasa_nlu:/app/models
+      - ./project:/app/project
+      - ./project/models/nlu:/app/model
+      - ./project/config:/app/config
     command:
       - start
       - --path
@@ -34,13 +39,15 @@ services:
 
   action_server:
     image: rasa/rasa_core_sdk:latest
-    container_name: action_server
+    container_name: rasa_action_server
+    ports:
+      - 5055:5055
     volumes:
-      - ./actions:/app/actions
+      - ./project/actions:/app/actions
 
   mongo:
     image: mongo
-    container_name: mongo
+    container_name: rasa_mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: rasa
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -49,7 +56,7 @@ services:
 
   mongo-express:
     image: mongo-express
-    container_name: mongo-express
+    container_name: rasa_mongo-express
     ports:
       - 8081:8081
     environment:

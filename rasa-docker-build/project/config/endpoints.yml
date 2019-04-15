@@ -6,6 +6,6 @@ action_endpoint:
 
 tracker_store:
   store_type: mongod
-  url: mongodb://mongo:27017
+  url: mongodb://192.168.0.160:27017
   username: rasa
   password: example
