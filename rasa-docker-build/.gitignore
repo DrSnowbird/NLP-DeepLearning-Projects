@@ -1,0 +1,9 @@
+*model_*
+*policy_*
+*models/**
+current/**
+*log/*
+
+*.log
+*swp 
+*swo

@@ -5,11 +5,14 @@
     },
     "utter_goodbye": {
       "slots": []
+    },
+    "utter_happy": {
+      "slots": []
     }
   },
   "python": "3.6.8",
   "max_histories": [
-    5,
+    3,
     null,
     5,
     2,
@@ -23,8 +26,8 @@
     "rasa.core.policies.form_policy.FormPolicy",
     "rasa.core.policies.mapping_policy.MappingPolicy"
   ],
-  "trained_at": "20190404-032607",
-  "rasa": "0.14.0a9",
-  "tensorflow": "1.12.0",
+  "trained_at": "20190501-214332",
+  "rasa": "0.15.0a1",
+  "tensorflow": "1.13.1",
   "sklearn": "0.20.2"
 }

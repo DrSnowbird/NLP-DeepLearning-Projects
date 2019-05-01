@@ -8,9 +8,11 @@ services:
     ports:
       - 5005:5005
     volumes:
-      - ./project:/app/project
-      - ./project/models/core:/app/models
-      - ./project/config:/app/config
+      - ./projects:/app/projects
+      - ./projects/models/core:/app/models
+      - ./projects/config:/app/config
+      - ./projects/logs:/app/logs
+      - ./projects/data:/app/data
     command:
       - start
       - --core
@@ -20,30 +22,43 @@ services:
       - --endpoints
       - config/endpoints.yml
       - -u
-      - current/
+      - current
 
   rasa_nlu:
-    image: rasa/rasa_nlu:latest-spacy
-#   image: rasa/rasa_nlu:latest-full
+#    image: rasa/rasa_nlu:latest-spacy
+    image: rasa/rasa_nlu:latest-full
     container_name: rasa_nlu
     ports:
       - 5000:5000
     volumes:
-      - ./project:/app/project
-      - ./project/models/nlu:/app/model
-      - ./project/config:/app/config
+      - ./projects:/app/projects
+      - ./projects/models/nlu:/app/models
+      - ./projects/config:/app/config
+      - ./projects/logs:/app/logs
+      - ./projects/data:/app/data
     command:
       - start
       - --path
       - models
+      - --project
+      - current
 
+#  nginx:
+#    image: nginx:mainline-alpine
+#    ports:
+#      - "58080:80"
+#    volumes:
+#      - "./nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
+#    links:
+#      - rasa_nlu
+      
   action_server:
     image: rasa/rasa_core_sdk:latest
     container_name: rasa_action_server
     ports:
       - 5055:5055
     volumes:
-      - ./project/actions:/app/actions
+      - ./projects/actions:/app/actions
 
   mongo:
     image: mongo
