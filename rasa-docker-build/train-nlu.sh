@@ -37,7 +37,7 @@ sudo docker run -it \
     rasa/rasa_nlu:${RASA_NLU_VERSION} \
     run \
         python -m rasa_nlu.train \
-        --fixed_model_name nlu \
+        --fixed_model_name nlu_model \
         --config config/nlu-config.yml \
         --data projects/data/nlu/nlu.md \
         --path models \

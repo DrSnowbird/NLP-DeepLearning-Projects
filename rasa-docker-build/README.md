@@ -84,31 +84,6 @@ The most important files
 docker-compose up
 ```
 
-# Check Rasa-NLU Service status
-```
-curl l localhost:5000/status
-
-(REST API call response)
-
-{
-  "max_training_processes": 1,
-  "current_training_processes": 0,
-  "available_projects": {
-    "default": {
-      "status": "ready",
-      "error_message": null,
-      "current_training_processes": 0,
-      "available_models": [
-        "nlu",
-        "current"
-      ],
-      "loaded_models": [
-        "current"
-      ]
-    }
-  }
-}
-```
 # Test Rasa Stack and Pipeline with trained Core and NLU models
 ```
 (Send Hello to Rasa (Core) Server at localhost:5005 port)
@@ -131,6 +106,31 @@ curl \
     "text": "Hey! How are you?"
   }
 ]
+```
+
+# Check Rasa-NLU Service status
+```
+curl l localhost:5000/status
+
+(REST API call response)
+
+{
+  "max_training_processes": 1,
+  "current_training_processes": 0,
+  "available_projects": {
+    "default": {
+      "status": "ready",
+      "error_message": null,
+      "current_training_processes": 0,
+      "available_models": [
+        "nlu_model"
+      ],
+      "loaded_models": [
+        "nlu_model"
+      ]
+    }
+  }
+}
 ```
 
 # References
