@@ -84,19 +84,51 @@ The most important files
 docker-compose up
 ```
 
+# Check Rasa-NLU Service status
+```
+curl l localhost:5000/status
+
+(REST API call response)
+
+{
+  "max_training_processes": 1,
+  "current_training_processes": 0,
+  "available_projects": {
+    "default": {
+      "status": "ready",
+      "error_message": null,
+      "current_training_processes": 0,
+      "available_models": [
+        "nlu",
+        "current"
+      ],
+      "loaded_models": [
+        "current"
+      ]
+    }
+  }
+}
+```
 # Test Rasa Stack and Pipeline with trained Core and NLU models
 ```
 (Send Hello to Rasa (Core) Server at localhost:5005 port)
+
 ./curl-message-to-chatbot.sh 
-+ curl --request POST --url http://localhost:5005/webhooks/rest/webhook --header 'content-type: application/json' --data '{
-    "message": "hello"
-  }'
+
+curl \
+    --request POST \
+    --url http:localhost:5005/webhooks/rest/webhook \
+    --header 'content-type: application/json'   \
+    --data '{
+        "message": "Hello"
+      }'
 
 (REST API call response)
+
 [
   {
     "recipient_id": "default",
-    "text": "Hi, how is it going?"
+    "text": "Hey! How are you?"
   }
 ]
 ```

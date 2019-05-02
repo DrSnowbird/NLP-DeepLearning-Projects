@@ -25,8 +25,8 @@ services:
       - current
 
   rasa_nlu:
-#    image: rasa/rasa_nlu:latest-spacy
-    image: rasa/rasa_nlu:latest-full
+    image: rasa/rasa_nlu:latest-spacy
+#    image: rasa/rasa_nlu:latest-full
     container_name: rasa_nlu
     ports:
       - 5000:5000
@@ -39,9 +39,7 @@ services:
     command:
       - start
       - --path
-      - models
-      - --project
-      - current
+      - models/
 
 #  nginx:
 #    image: nginx:mainline-alpine

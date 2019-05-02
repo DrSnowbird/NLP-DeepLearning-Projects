@@ -1,16 +1,13 @@
 nlu:
-#  url: http://rasa_nlu:5000
-  url: http://localhost:5000
+  url: http://rasa_nlu:5000
 # token: "my_token"
 
 action_endpoint:
-#  url: http://action_server:5055/webhook
-  url: http://localhost:5055/webhook
+  url: http://action_server:5055/webhook
   
 tracker_store:
   store_type: mongod
   # You need to provide IP address for 
-  #url: mongodb://192.168.0.160:27017
   url: mongodb://rasa_mongo:27017
   username: rasa
   password: example

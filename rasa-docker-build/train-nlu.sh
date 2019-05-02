@@ -37,12 +37,13 @@ sudo docker run -it \
     rasa/rasa_nlu:${RASA_NLU_VERSION} \
     run \
         python -m rasa_nlu.train \
-        --config ./config/nlu-config.yml \
-        --data ./projects/data/nlu \
-        --path ./models \
+        --fixed_model_name nlu \
+        --config config/nlu-config.yml \
+        --data projects/data/nlu/nlu.md \
+        --path models \
         --num_threads ${NUM_THREADS:-2} \
-        --project ${PROJECT:-current}
-
+        --verbose
+        
 echo
 echo "... Remove container instance ..."
 echo
