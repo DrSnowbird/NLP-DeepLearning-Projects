@@ -56,7 +56,6 @@ The most important files
 └── train-nlu.sh
 
 
-
 ```
 # Warning
 `Due to Rasa components are actively evolving, hence, the docker images version might not work in the near future possible to due API changes for Core and NLU, etc.`
@@ -73,10 +72,12 @@ The most important files
   
 # Training Core
 ```
+./train-core.sh
 ```
 
 # Training NLU
 ```
+train-nlu.sh
 ```
 
 # Start Full RASA Stack and Pipelines
@@ -110,7 +111,7 @@ curl \
 
 # Check Rasa-NLU Service status
 ```
-curl l localhost:5000/status
+curl localhost:5000/status
 
 (REST API call response)
 
@@ -137,6 +138,8 @@ curl l localhost:5000/status
 * [Using Rasa NLU with Docker - The easiest way to get started working with Rasa](https://blog.spg.ai/using-rasa-nlu-with-docker-96b86856b392)
 * [Rasa Docker how to](https://rasa.com/docs/core/docker_walkthrough/)
 * [rasa/rasa_nlu - Docker Hub](https://hub.docker.com/r/rasa/rasa_nlu/)
-* [Docs on how to build a bot with rasa & docker](
+* [Rasa Entities (NLU engine)](https://rasa.com/docs/nlu/entities/)
+* [spaCy onlne demo](https://explosion.ai/demos/displacy-ent)
+* [Rasa multiple intents using NLU TensorFlow pipeline](https://blog.rasa.com/how-to-handle-multiple-intents-per-input-using-rasa-nlu-tensorflow-pipeline/)
 
 
