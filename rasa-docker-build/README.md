@@ -1,4 +1,6 @@
-# RASA Docker Pipelines
+# RASA Docker Build Process
+Soure: https://rasa.com/docs/core/0.14.1/docker_walkthrough/
+
 
 # Files Structures
 The most important files
@@ -141,5 +143,6 @@ curl localhost:5000/status
 * [Rasa Entities (NLU engine)](https://rasa.com/docs/nlu/entities/)
 * [spaCy onlne demo](https://explosion.ai/demos/displacy-ent)
 * [Rasa multiple intents using NLU TensorFlow pipeline](https://blog.rasa.com/how-to-handle-multiple-intents-per-input-using-rasa-nlu-tensorflow-pipeline/)
+* [Rasa - Evaluating Models Performance](https://rasa.com/docs/nlu/0.15.0/evaluation/)
 
 
