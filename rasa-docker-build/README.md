@@ -139,10 +139,12 @@ curl localhost:5000/status
 # References
 * [Using Rasa NLU with Docker - The easiest way to get started working with Rasa](https://blog.spg.ai/using-rasa-nlu-with-docker-96b86856b392)
 * [Rasa Docker how to](https://rasa.com/docs/core/docker_walkthrough/)
-* [rasa/rasa_nlu - Docker Hub](https://hub.docker.com/r/rasa/rasa_nlu/)
+* [Rasa rasa/rasa_nlu - Docker Hub](https://hub.docker.com/r/rasa/rasa_nlu/)
 * [Rasa Entities (NLU engine)](https://rasa.com/docs/nlu/entities/)
 * [spaCy onlne demo](https://explosion.ai/demos/displacy-ent)
 * [Rasa multiple intents using NLU TensorFlow pipeline](https://blog.rasa.com/how-to-handle-multiple-intents-per-input-using-rasa-nlu-tensorflow-pipeline/)
 * [Rasa - Evaluating Models Performance](https://rasa.com/docs/nlu/0.15.0/evaluation/)
+* [Rasa GUI for editing rasa-nlu training data](https://github.com/RasaHQ/rasa-nlu-trainer)
+* [Rasa X - Training AI Video](https://www.youtube.com/watch?v=VXvWdrr2yw8&feature=youtu.be)
 
 

@@ -1,10 +1,38 @@
-version: '3.0'
+version: '3'
 
 services:
+
+  action_server:
+    image: rasa/rasa_core_sdk:latest
+    container_name: rasa_action_server
+    networks: ['rasa-network']
+    ports:
+      - 5055:5055
+    volumes:
+      - ./projects/actions:/app/actions
+
+  rasa_nlu:
+    image: rasa/rasa_nlu:latest-spacy
+#    image: rasa/rasa_nlu:latest-full
+    container_name: rasa_nlu
+    networks: ['rasa-network']
+    ports:
+      - 5000:5000
+    volumes:
+      - ./projects:/app/projects
+      - ./projects/models/nlu:/app/models
+      - ./projects/config:/app/config
+      - ./projects/logs:/app/logs
+      - ./projects/data:/app/data
+    command:
+      - start
+      - --path
+      - models
 
   rasa_core:
     image: rasa/rasa_core:latest
     container_name: rasa_core
+    networks: ['rasa-network']
     ports:
       - 5005:5005
     volumes:
@@ -23,23 +51,9 @@ services:
       - config/endpoints.yml
       - -u
       - nlu_model
-
-  rasa_nlu:
-    image: rasa/rasa_nlu:latest-spacy
-#    image: rasa/rasa_nlu:latest-full
-    container_name: rasa_nlu
-    ports:
-      - 5000:5000
-    volumes:
-      - ./projects:/app/projects
-      - ./projects/models/nlu:/app/models
-      - ./projects/config:/app/config
-      - ./projects/logs:/app/logs
-      - ./projects/data:/app/data
-    command:
-      - start
-      - --path
-      - models
+    depends_on:
+      - "rasa_nlu"
+      - "action_server"
 
   # Proxy for 4 Containers of Rasa-NLU to provide scalability
 #  nginx:
@@ -51,17 +65,10 @@ services:
 #    links:
 #      - rasa_nlu
       
-  action_server:
-    image: rasa/rasa_core_sdk:latest
-    container_name: rasa_action_server
-    ports:
-      - 5055:5055
-    volumes:
-      - ./projects/actions:/app/actions
-
   mongo:
     image: mongo
     container_name: rasa_mongo
+    networks: ['rasa-network']
     environment:
       MONGO_INITDB_ROOT_USERNAME: rasa
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -71,6 +78,7 @@ services:
   mongo-express:
     image: mongo-express
     container_name: rasa_mongo-express
+    networks: ['rasa-network']
     ports:
       - 8081:8081
     environment:
@@ -79,3 +87,5 @@ services:
     depends_on:
       - mongo
 
+networks: {rasa-network: {}}
+volumes: {rasauidata:{}}
